@@ -44,7 +44,7 @@ public class NolassesManager {
         linkStore.addLink(time, link);
         linkTracker.updateLinks(linkStore.getLinks());
         JLabel temp = new JLabel();
-        temp.setText(link + " " + time);
+        temp.setText(time + " " + link);
 
         temp.setFont(new Font("Consolas", Font.PLAIN, 20));
         temp.addMouseListener(new MouseListener() {
@@ -151,7 +151,7 @@ public class NolassesManager {
             mainPanel.setVisible(true);
         }
     }
-    
+
     // link text is: link + " " + time
     // this method looks for the space, splits the string and passes it onto drawLink which creates a Jlabel for the link
     private void parseLinkText(String text) {
