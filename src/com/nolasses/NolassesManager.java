@@ -151,19 +151,10 @@ public class NolassesManager {
             mainPanel.setVisible(true);
         }
     }
-
-    private boolean validateInput(String text){
-        if(text.indexOf(text.substring(text.indexOf(' ')+1)) != -1){
-            logger.error(Errors.elist.UNKNOWN, this.getClass().getSimpleName(), "invalid link");
-            updateGetStarted("invalid input: input should only have one space [link space time]");
-            return false;
-        } else return true;
-    }
-
+    
     // link text is: link + " " + time
     // this method looks for the space, splits the string and passes it onto drawLink which creates a Jlabel for the link
     private void parseLinkText(String text) {
-        if(!validateInput(text)) return;
         int split = text.indexOf(' ');
         String link = text.substring(0, split);
         String time = text.substring(split + 1, text.length());
