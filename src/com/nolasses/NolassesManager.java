@@ -31,6 +31,14 @@ public class NolassesManager {
         this.linkStore = linkStore;
         mainPanel.setSize(800, 500);
 
+        //terminate when the window is closed
+        mainFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                linkTracker.terminate();
+                System.exit(0);
+            }
+        });
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
@@ -168,7 +176,7 @@ public class NolassesManager {
 
     // main functional method that launches the window and sets the Jframe and panel elements
     public void launchWindow(){
-
+        mainFrame.setTitle("");
         // the add a new link section
         // plus button to add link, text field to type
         // x button to cleat

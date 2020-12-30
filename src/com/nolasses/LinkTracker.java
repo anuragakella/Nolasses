@@ -14,6 +14,13 @@ public class LinkTracker implements Runnable {
     public NolassesManager nolassesManager;
     boolean nolassesSet = false;
 
+    //terminate the thread when the window is closed
+    public volatile boolean running = true;
+
+    public void terminate(){
+        running = false;
+    }
+
     public LinkTracker(Map<String, String> links){
         this.links = links;
         this.oldLinks = links;
@@ -38,7 +45,7 @@ public class LinkTracker implements Runnable {
 
     Logger logger = new Logger();
     public void timeLoop(){
-        while(true){
+        while(running){
             String currentTimeStr = getFormattedTime();
             if(nolassesSet){
                 this.nolassesManager.updateTime(currentTimeStr);
@@ -77,6 +84,6 @@ public class LinkTracker implements Runnable {
 
     @Override
     public void run() {
-        timeLoop();
+            timeLoop();
     }
 }
